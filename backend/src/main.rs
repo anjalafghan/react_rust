@@ -1,15 +1,34 @@
 use std::env;
 use axum::{Json, Router, routing::get};
-use serde::Deserialize;
 use serde_json::Value;
 mod get_monthly_value;
 mod cors;
 mod scan_and_insert;
+mod get_all_data;
 
 use sqlx::postgres::PgPoolOptions;
 
 use dotenv::dotenv;
+use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Deserialize, Serialize)]
+struct Record{
+    #[serde(rename = "Date")]
+    date: String,
+    #[serde(rename = "Narration")]
+    narration: String,
+    #[serde(rename = "Value Dat")]
+    value_dat: String,
+    #[serde(rename = "Debit Amount")]
+    debit_amount: String,
+    #[serde(rename = "Credit Amount")]
+    credit_amount: String,
+    #[serde(rename = "Chq/Ref Number")]
+    chq_ref_number: String,
+    #[serde(rename = "Closing Balance")]
+    closing_balance: String
+
+}
 #[tokio::main]
 async fn main() {
     dotenv().ok();
@@ -28,6 +47,10 @@ async fn main() {
         .route("/scan_and_insert", get({
             let pool = pool.clone();
             move || scan_and_insert::scan_and_insert(pool.clone())
+        }))
+        .route("/display", get({
+            let pool = pool.clone();
+            move || get_all_data::display(pool.clone())
         }))
         .layer(cors);
 

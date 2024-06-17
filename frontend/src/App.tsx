@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://0.0.0.0:3000/get_monthly_analysis")
+    fetch("http://0.0.0.0:3000/display")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -16,10 +16,32 @@ function App() {
       .catch((error) => console.log("Error: ", error));
   }, []);
 
+  const json_data = JSON.parse(data);
+  const keys = Object.keys(json_data.length ? json_data[0] : {});
+
   return (
-    <>
-      <h1>Hello world {data ? JSON.stringify(data) : "Loading..."}</h1>
-    </>
+    <div className="App">
+      {json_data.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              {keys.map((item, idx) => (
+                <th key={idx}>{item}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {json_data.map((item, idx) => (
+              <tr key={idx}>
+                {keys.map((key, idx) => (
+                  <td>{item[key]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
   );
 }
 
