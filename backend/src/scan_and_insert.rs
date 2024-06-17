@@ -2,7 +2,7 @@ use sqlx::{Pool, Postgres};
 use axum::Json;
 use serde_json::Value;
 use csv::{ReaderBuilder, Trim};
-use serde::Deserialize;
+use serde::{Deserialize};
 #[derive(Debug, Deserialize)]
 struct Record{
     #[serde(rename = "Date")]
