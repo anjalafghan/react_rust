@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-
+interface MonthlyDebit {
+  month: string;
+  total_debit: string;
+  total_credit: string;
+  balance: string;
+}
 function App() {
-  const [data, setData] = useState(null);
-
+  const [data, setData] = useState<MonthlyDebit[]>([]);
   useEffect(() => {
-    fetch("http://0.0.0.0:3000/display")
+    fetch("http://0.0.0.0:3000/get_monthly_debit")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -16,31 +20,29 @@ function App() {
       .catch((error) => console.log("Error: ", error));
   }, []);
 
-  const json_data = JSON.parse(data);
-  const keys = Object.keys(json_data.length ? json_data[0] : {});
-
   return (
-    <div className="App">
-      {json_data.length > 0 && (
-        <table>
-          <thead>
-            <tr>
-              {keys.map((item, idx) => (
-                <th key={idx}>{item}</th>
-              ))}
+    <div className="container">
+      <h2>Monthly Debit Table</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Total Debit</th>
+            <th>Total Credit</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((record, index) => (
+            <tr key={index}>
+              <td>{record.month}</td>
+              <td>{record.total_debit}</td>
+              <td>{record.total_credit}</td>
+              <td>{record.balance}</td>
             </tr>
-          </thead>
-          <tbody>
-            {json_data.map((item, idx) => (
-              <tr key={idx}>
-                {keys.map((key, idx) => (
-                  <td>{item[key]}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

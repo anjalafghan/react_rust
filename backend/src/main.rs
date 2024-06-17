@@ -1,6 +1,5 @@
 use std::env;
-use axum::{Json, Router, routing::get};
-use serde_json::Value;
+use axum::{Router, routing::get};
 mod get_monthly_value;
 mod cors;
 mod scan_and_insert;
@@ -29,6 +28,12 @@ struct Record{
     closing_balance: String
 
 }
+
+#[derive(Debug, Deserialize, Serialize)]
+struct MonthlyDebit {
+    month: String,
+    total_debit: f64,
+}
 #[tokio::main]
 async fn main() {
     dotenv().ok();
@@ -43,7 +48,6 @@ async fn main() {
     let cors = cors::cors();
     let app = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
-        .route("/get_monthly_analysis", get(get_month_data))
         .route("/scan_and_insert", get({
             let pool = pool.clone();
             move || scan_and_insert::scan_and_insert(pool.clone())
@@ -52,12 +56,13 @@ async fn main() {
             let pool = pool.clone();
             move || get_all_data::display(pool.clone())
         }))
+        .route("/get_monthly_debit", get({
+            let pool = pool.clone();
+            move || get_monthly_value::get_monthly_debit(pool.clone())
+        }))
         .layer(cors);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
-async fn get_month_data() -> Json<Value> {
-    get_monthly_value::get_monthly_value()
-}
