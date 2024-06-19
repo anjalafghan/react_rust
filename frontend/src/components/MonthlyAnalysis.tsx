@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
 
 interface MonthlyDebit {
   month: string;
@@ -6,7 +7,6 @@ interface MonthlyDebit {
   total_credit: string;
   balance: string;
 }
-
 export function MonthlyAnalysis() {
   const [data, setData] = useState<MonthlyDebit[]>([]);
   useEffect(() => {
@@ -21,29 +21,15 @@ export function MonthlyAnalysis() {
       .catch((error) => console.log("Error: ", error));
   }, []);
 
-  return (
-    <div className="container">
-      <h2>Monthly Debit Table</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Month</th>
-            <th>Total Debit</th>
-            <th>Total Credit</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((record, index) => (
-            <tr key={index}>
-              <td>{record.month}</td>
-              <td>{record.total_debit}</td>
-              <td>{record.total_credit}</td>
-              <td>{record.balance}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    return (
+        <LineChart width={730} height={250} data={data}
+                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid />
+            <XAxis dataKey="" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line name="monthly average balance" type="monotone" dataKey="balance" stroke="#8884d8" strokeWidth={4}/>
+        </LineChart>
   );
 }

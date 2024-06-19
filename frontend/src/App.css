@@ -1,99 +1,99 @@
-#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-}
+/*#root {*/
+/*    max-width: 1280px;*/
+/*    margin: 0 auto;*/
+/*    padding: 2rem;*/
+/*    text-align: center;*/
+/*}*/
 
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-}
+/*.logo {*/
+/*    height: 6em;*/
+/*    padding: 1.5em;*/
+/*    will-change: filter;*/
+/*    transition: filter 300ms;*/
+/*}*/
+/*.logo:hover {*/
+/*    filter: drop-shadow(0 0 2em #646cffaa);*/
+/*}*/
+/*.logo.react:hover {*/
+/*    filter: drop-shadow(0 0 2em #61dafbaa);*/
+/*}*/
 
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
+/*@keyframes logo-spin {*/
+/*    from {*/
+/*        transform: rotate(0deg);*/
+/*    }*/
+/*    to {*/
+/*        transform: rotate(360deg);*/
+/*    }*/
+/*}*/
 
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
-    }
-}
+/*@media (prefers-reduced-motion: no-preference) {*/
+/*    a:nth-of-type(2) .logo {*/
+/*        animation: logo-spin infinite 20s linear;*/
+/*    }*/
+/*}*/
 
-.card {
-    padding: 2em;
-}
+/*.card {*/
+/*    padding: 2em;*/
+/*}*/
 
-.read-the-docs {
-    color: #888;
-}
-/* MonthlyDebitTable.css */
+/*.read-the-docs {*/
+/*    color: #888;*/
+/*}*/
+/*!* MonthlyDebitTable.css *!*/
 
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    background-color: #242424; /* Set background color */
-    color: #ffffff; /* Text color for contrast */
-}
+/*.container {*/
+/*    max-width: 800px;*/
+/*    margin: auto;*/
+/*    padding: 20px;*/
+/*    background-color: #242424; !* Set background color *!*/
+/*    color: #ffffff; !* Text color for contrast *!*/
+/*}*/
 
-h2 {
-    text-align: center;
-    color: #ffffff; /* Text color */
-}
+/*h2 {*/
+/*    text-align: center;*/
+/*    color: #ffffff; !* Text color *!*/
+/*}*/
 
-.table-container {
-    overflow-x: auto;
-}
+/*.table-container {*/
+/*    overflow-x: auto;*/
+/*}*/
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #333333; /* Table background color */
-    color: #ffffff; /* Table text color */
-}
+/*table {*/
+/*    width: 100%;*/
+/*    border-collapse: collapse;*/
+/*    margin-top: 20px;*/
+/*    background-color: #333333; !* Table background color *!*/
+/*    color: #ffffff; !* Table text color *!*/
+/*}*/
 
-th,
-td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #dddddd; /* Lighter border color */
-}
+/*th,*/
+/*td {*/
+/*    padding: 12px 15px;*/
+/*    text-align: left;*/
+/*    border-bottom: 1px solid #dddddd; !* Lighter border color *!*/
+/*}*/
 
-th {
-    background-color: #555555; /* Header background color */
-    font-weight: bold;
-}
+/*th {*/
+/*    background-color: #555555; !* Header background color *!*/
+/*    font-weight: bold;*/
+/*}*/
 
-td {
-    white-space: nowrap; /* Prevents text wrapping in table cells */
-}
+/*td {*/
+/*    white-space: nowrap; !* Prevents text wrapping in table cells *!*/
+/*}*/
 
-.loader {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 1.2rem;
-    color: #ffffff; /* Loader text color */
-}
+/*.loader {*/
+/*    text-align: center;*/
+/*    margin-top: 50px;*/
+/*    font-size: 1.2rem;*/
+/*    color: #ffffff; !* Loader text color *!*/
+/*}*/
 
-.positive {
-    color: #4caf50; /* Green color for positive balances */
-}
+/*.positive {*/
+/*    color: #4caf50; !* Green color for positive balances *!*/
+/*}*/
 
-.negative {
-    color: #f44336; /* Red color for negative balances */
-}
+/*.negative {*/
+/*    color: #f44336; !* Red color for negative balances *!*/
+/*}*/
