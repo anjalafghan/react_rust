@@ -47,7 +47,7 @@ pub async fn get_monthly_debit(pool: Pool<Postgres>) -> Result<Json<Value>, Stri
             }
 
         })
-    .collect();
+        .collect();
 
 
     Ok(Json(json!(monthly_debit)))
