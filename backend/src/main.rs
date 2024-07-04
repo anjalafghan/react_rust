@@ -25,7 +25,9 @@ struct Record{
     #[serde(rename = "Chq/Ref Number")]
     chq_ref_number: String,
     #[serde(rename = "Closing Balance")]
-    closing_balance: String
+    closing_balance: String,
+    #[serde(rename = "Label")]
+    label: String
 
 }
 

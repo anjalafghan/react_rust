@@ -24,6 +24,7 @@ pub async fn display(pool: Pool<Postgres>) -> Json<String> {
             credit_amount: row.credit_amount.clone().unwrap_or_else(|| "".to_string()),
             chq_ref_number: row.chq_ref_number.clone().unwrap_or_else(|| "".to_string()),
             closing_balance: row.closing_balance.clone().unwrap_or_else(|| "".to_string()),
+            label: row.label.clone().unwrap_or_else(|| "".to_string()),
         }
     }).collect();
 

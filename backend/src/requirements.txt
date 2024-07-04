@@ -1,0 +1,7 @@
+pandas
+numpy
+tensorflow
+transformers
+scikit-learn
+psycopg2-binary
+python-dotenv
