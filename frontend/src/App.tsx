@@ -1,9 +1,17 @@
 import "./App.css";
-import {MonthlyAnalysis} from "./components/MonthlyAnalysis.tsx";
-
+import { MonthlyAnalysis } from "./components/MonthlyAnalysis.tsx";
+import { MyDatePicker } from "./components/DatePicker.tsx";
 function App() {
-    return(
-<MonthlyAnalysis></MonthlyAnalysis>
+  return (
+    <div>
+      <div>
+        <MyDatePicker></MyDatePicker>
+      </div>
+      <div></div>
+      <div>
+        <MonthlyAnalysis></MonthlyAnalysis>
+      </div>
+    </div>
   );
 }
 

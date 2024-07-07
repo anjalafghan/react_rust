@@ -1,4 +1,10 @@
 /target
 .env
 .sqlx
-
+/src/bert_finance_model
+/src/python_machine_learning
+/src/python_react_rust
+/src/output.csv
+/src/new_data.csv
+/src/data.csv
+/src/data.delimited

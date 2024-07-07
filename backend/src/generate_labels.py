@@ -55,6 +55,6 @@ def predict_labels(csv_file):
 
 
 # Example usage:
-csv_file_path = 'new_data.csv'
+csv_file_path = 'output.csv'
 predicted_df = predict_labels(csv_file_path)
 print(predicted_df.head())  # Display the predicted labels
