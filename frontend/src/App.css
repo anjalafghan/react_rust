@@ -97,3 +97,16 @@
 /*.negative {*/
 /*    color: #f44336; !* Red color for negative balances *!*/
 /*}*/
+.month_component {
+    width: 800px;
+    height: 500px;
+}
+
+.NavigationBar {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    float: right;
+}

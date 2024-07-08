@@ -2,3 +2,6 @@ target
 node_modules
 data.delimited
 .idea
+/backend/src/bert_finance_model/
+/backend/src/python/
+/backend/src/python_react_rust/

@@ -16,17 +16,18 @@ struct Record{
     date: String,
     #[serde(rename = "Narration")]
     narration: String,
+    #[serde(rename = "Chq/Ref Number")]
+    chq_ref_number: String,
     #[serde(rename = "Value Dat")]
     value_dat: String,
     #[serde(rename = "Debit Amount")]
     debit_amount: String,
     #[serde(rename = "Credit Amount")]
     credit_amount: String,
-    #[serde(rename = "Chq/Ref Number")]
-    chq_ref_number: String,
     #[serde(rename = "Closing Balance")]
-    closing_balance: String
-
+    closing_balance: String,
+    #[serde(rename = "Label")]
+    label: String
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -65,4 +66,3 @@ async fn main() {
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
-
