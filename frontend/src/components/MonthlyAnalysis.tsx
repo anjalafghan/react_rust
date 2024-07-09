@@ -8,13 +8,16 @@ import {
   XAxis,
   YAxis,
   ResponsiveContainer,
+  BarChart,
+  Bar,
+  ReferenceLine,
 } from "recharts";
 
 interface MonthlyDebit {
   month: string;
-  total_debit: string;
-  total_credit: string;
-  balance: string;
+  total_debit: number;
+  total_credit: number;
+  balance: number;
 }
 
 export function MonthlyAnalysis() {
@@ -33,63 +36,58 @@ export function MonthlyAnalysis() {
   }, []);
 
   return (
-    <div className="month_component">
-      <ResponsiveContainer width="99%" height={500}>
-        <LineChart
-          data={data}
-          margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
-        >
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-
-          <Line
-            type="monotone"
-            dataKey="balance"
-            name="Balance Left"
-            stroke="#82ca9d"
-          />
-        </LineChart>
-      </ResponsiveContainer>
-      <ResponsiveContainer width="99%" height={500}>
+    <div className="month_component" style={{ height: "1000px" }}>
+      <ResponsiveContainer width="99%" height="30%">
         <LineChart
           data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <CartesianGrid />
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
           <Legend />
-
-          <Line
-            type="monotone"
-            dataKey="total_credit"
-            name="Money Credited"
-            stroke="#82ca9d"
-          />
-        </LineChart>
-      </ResponsiveContainer>
-      <ResponsiveContainer width="99%" height={500}>
-        <LineChart
-          data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-
+          <CartesianGrid strokeDasharray="3 3" />
           <Line
             type="monotone"
             dataKey="total_debit"
             name="Money Debited"
             stroke="#e20404"
           />
+          <Line
+            type="monotone"
+            dataKey="total_credit"
+            name="Money Credited"
+            stroke="#679A7A"
+          />
         </LineChart>
+      </ResponsiveContainer>
+      <ResponsiveContainer width="100%" height="30%">
+        <BarChart
+          data={data}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="total_credit" stackId="a" fill="#679a7a" />
+          <Bar dataKey="total_debit" stackId="a" fill="#d33d3d" />
+        </BarChart>
+      </ResponsiveContainer>
+      <ResponsiveContainer width="100%" height="30%">
+        <BarChart
+          data={data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="month" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <ReferenceLine y={0} stroke="#000" />
+          <Bar dataKey="balance" fill="#8884d8" name="Monthly Balance" />
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );
